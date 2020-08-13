@@ -41,8 +41,12 @@ namespace leave_management
             services.AddScoped<ILeaveAllocationRepository, LeaveAllocationRepository>();
 
             services.AddAutoMapper(typeof(Maps));
-
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            
+            ///// IF EMAIL CONFIRMATION REQUIRED TO LOGIN:
+            //services.AddDefaultIdentity<IdentityUser>(options => { options.SignIn.RequireConfirmedAccount = true;})
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+            
+            services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
